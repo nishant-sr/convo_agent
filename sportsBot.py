@@ -3,7 +3,7 @@ from chatterbot import ChatBot
 from chatterbot.trainers import ListTrainer  # importing neccasary packages
 
 
-sports_bot = ChatBot(name='PyBot', read_only=False, logic_adapters=['chatterbot.logic.MathematicalEvaluation',
+sports_bot = ChatBot(name='sportBot', read_only=False, logic_adapters=['chatterbot.logic.MathematicalEvaluation',
                                                                     'chatterbot.logic.BestMatch'])  # intializing the both
 
 intial_talk = ['hi there!',
@@ -35,10 +35,6 @@ for item in (intial_talk, basketball_talk, hockey_talk):
     list_trainer.train(item)
 
 
-print(sports_bot.get_response("Hi"))  # testing certain responses
-print(sports_bot.get_response("basketball"))
-print(sports_bot.get_response("Who is your favourite player?"))
-print(sports_bot.get_response("Who is your favourite team?"))
-print(sports_bot.get_response("Hockey"))
-print(sports_bot.get_response("Flames"))
-print(sports_bot.get_response("Conor McDavid"))
+while True:
+    # testing certain responses
+    print("Bot:", sports_bot.get_response(input()))
