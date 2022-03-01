@@ -3,7 +3,7 @@ from chatterbot import ChatBot
 from chatterbot.trainers import ListTrainer  # importing neccasary packages
 
 
-sports_bot = ChatBot(name='sportBot', read_only=True, logic_adapters=['chatterbot.logic.BestMatch'])  # intializing the both
+sports_bot = ChatBot(name='sportBot', read_only=False, logic_adapters=['chatterbot.logic.BestMatch'])  # intializing the both
 
 intial_talk = ['hi there!',
                'hi!',
