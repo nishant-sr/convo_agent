@@ -8,8 +8,6 @@ sports_bot = ChatBot(name='sportBot', read_only=True, logic_adapters=['chatterbo
 intial_talk = ['hi there!',
                'hi!',
                'how is it going?',
-               'how are you?',
-               'i\'m cool.',
                'I\'m doing amazing, and you?',
                'always cool.',
                'i\'m ok or good',
@@ -21,12 +19,12 @@ intial_talk = ['hi there!',
                'not so good',
                'It\'s ok, your day will get better!.',
                'what\'s your name?',
-               'i\'m SportsBot. Ask me a sports question, please.']
+               'I\'m SportsBot. Ask me a sports question!']
 basketball_talk = ['Fun fact about basketball',
-                   'Basketball was invented in 1891! Who is your favourite player?' 'Mine is Stephen Curry.', 'Who is your favourite team?', 'I like Golden State', 'Do you play basketball?', 'Lebron James is a great player', 'I think the warriors will win this year']
+                   'Basketball was invented in 1891!', 'Who is your favourite team?', 'I like Golden State', 'Do you play basketball?', 'I cannot because I am a bot, silly goose!']
 
                    
-hockey_talk = ['What do you think of hockey?', 'Hockey is a great sport! Who\'s your favourite team?', 
+hockey_talk = ['What do you think of hockey?', 'Hockey is a great sport, who\'s your favourite team?', 
                 'I like the flames', 'The flames are doing very well this year! Who is your favourite player?', 
                 'Conor McDavid is my favourite player.', 'That\'s cool! He\'s a really good player.', 
                'What is an offside?', 'An offside is when the offensive team is bringing the puck into the other team\'s zone and a player without the puck crosses before the player with the puck.', 
@@ -62,6 +60,8 @@ baseball_talk = ['What do you think of baseball?','Baseball is very fun, but can
 list_trainer = ListTrainer(sports_bot)
 for item in (intial_talk, basketball_talk, hockey_talk, leaving_talk):
     list_trainer.train(item)
+
+print("Hi, how can I help?\n")
 
 
 while True:
