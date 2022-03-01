@@ -21,8 +21,7 @@ intial_talk = ['hi there!',
                'not so good',
                'It\'s ok, your day will get better!.',
                'what\'s your name?',
-               'i\'m SportsBot. Ask me a sports question, please.',
-               'Goodbye']
+               'i\'m SportsBot. Ask me a sports question, please.']
 basketball_talk = ['Fun fact about basketball',
                    'Basketball was invented in 1891! Who is your favourite player?' 'Mine is Stephen Curry.', 'Who is your favourite team?', 'I like Golden State', 'Do you play basketball?', 'Lebron James is a great player', 'I think the warriors will win this year']
 
@@ -45,9 +44,14 @@ hockey_talk = ['What do you think of hockey?', 'Hockey is a great sport! Who\'s 
                'Who invented the zamboni?', 'Frank Zamboni invented the first self-propelled ice-clearing machine, in 1949. ']
 
 
+leaving_talk = ['Goodbye', 'Goodbye! How did you find my services today?',
+                'Not good', 'I\'m sorry to hear that :/', 
+                'It was good', 'Great! Thanks for joining me today',
+                'It was fantastic', '*Standing ovation to I*, thank you!']
+
 # this allows the bot to learn responses
 list_trainer = ListTrainer(sports_bot)
-for item in (intial_talk, basketball_talk, hockey_talk):
+for item in (intial_talk, basketball_talk, hockey_talk, leaving_talk):
     list_trainer.train(item)
 
 
