@@ -42,10 +42,12 @@ hockey_talk = ['What do you think of hockey?', 'Hockey is a great sport, who\'s 
                'Who invented the zamboni?', 'Frank Zamboni invented the first self-propelled ice-clearing machine, in 1949. ']
 
 
-leaving_talk = ['Goodbye', 'Goodbye! How did you find my services today?',
+extra_talk = ['Goodbye', 'Goodbye! How did you find my services today?',
                 'Not good', 'I\'m sorry to hear that :/', 
                 'It was good', 'Great! Thanks for joining me today',
-                'It was fantastic', '*Standing ovation to I*, thank you!']
+                'It was fantastic', '*Standing ovation to I*, thank you!',
+                "How are you doing today?","I'm fine, how are you?",
+                "What is your role?","My role is to assist you with any questions you may have about hockey,baseball,basketball, and football!"]
 
 
 
