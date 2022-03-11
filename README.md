@@ -24,7 +24,7 @@ After the strings were made, in order for the bot to learn, we had to add a list
 
 ## Project Description
 
-This is a conversational agent that assists with sports questions. The agent takes input from the user regarding any questions related to basketball, hockey and basketball. The user can also engage in some small talk with the bot. In this case, the users will be taking on the role of a newcomer to sports, and will ask questions that are related to sports that they might not have known too much about previously. Answers to the questions will be provided in a concise and precise manner as possible. 
+This is a conversational agent that assists with sports questions. The agent takes input from the user regarding any questions related to basketball, hockey,football, and basketball. The user can also engage in some small talk with the bot. In this case, the users will be taking on the role of a newcomer to sports, and will ask questions that are related to sports that they might not have known too much about previously. Answers to the questions will be provided in a concise and precise manner as possible. 
 
 ## Navigation
 

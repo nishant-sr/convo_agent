@@ -56,6 +56,12 @@ baseball_talk = ['What do you think of baseball?','Baseball is very fun, but can
                 'The Atlanta Braves won the 2021 world series','What is a foul?','Simply put, a foul is when the ball goes out of bounds or was not pitched properly','What is a strike?',
                 'A strike is when a batter swings and misses the ball in the strike zone','What kind of equipment do baseball players need when batting?','When batting, players need to wear a helmet, and use a baseball bat to hit the ball']
 
+football_talk = ["Fun fact about football","The NFL had its first event in 1920. Who's your favourite team? ", "I like the Seahawks","How do you score a point in Football?",
+                "You can score a touchdown by taking the ball to the oppposite endzone for 6 points, and an addition 1 point for the field goal","Is tackling allowed in football?",
+                "Usually yes, football is a contact sport and most leagues allow tackling as long as it's within bounds","How do players stay protected?","Usually players wear protective gear such as helmets and shoulder pads",
+                "What's the most successful team in the NFL?","The Steelers and the Patriots both have 6 Super-Bowl wins, placing them at the top"]
+
+
 # this allows the bot to learn responses
 list_trainer = ListTrainer(sports_bot)
 for item in (intial_talk, basketball_talk, hockey_talk, leaving_talk):
