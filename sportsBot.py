@@ -1,10 +1,17 @@
 from asyncore import read
+import nltk
+from tabulate import tabulate
 from chatterbot import ChatBot
 from chatterbot.trainers import ListTrainer  # importing neccasary packages
-
-
-sports_bot = ChatBot(name='sportBot', read_only=False, logic_adapters=['chatterbot.logic.BestMatch'])  # intializing the both
-
+from textblob import TextBlob
+from nltk.corpus import wordnet
+nltk.download('omw-1.4')
+nltk.download('punkt')
+nltk.download('averaged_perceptron_tagger')
+nltk.download('maxent_ne_chunker')
+nltk.download('words')
+sports_bot = ChatBot(name='sportBot', read_only=False, logic_adapters=['chatterbot.logic.BestMatch']) 
+ # intializing the both
 intial_talk = ['hi there!',
                'hi!',
                'how is it going?',
@@ -62,16 +69,60 @@ football_talk = ["Fun fact about football","The NFL had its first event in 1920.
                 "You can score a touchdown by taking the ball to the oppposite endzone for 6 points, and an addition 1 point for the field goal","Is tackling allowed in football?",
                 "Usually yes, football is a contact sport and most leagues allow tackling as long as it's within bounds","How do players stay protected?","Usually players wear protective gear such as helmets and shoulder pads",
                 "What's the most successful team in the NFL?","The Steelers and the Patriots both have 6 Super-Bowl wins, placing them at the top"]
+#POS tag
+def PosTag(sent):
+    list=[]
+    #for i in sent:
+    tokens = nltk.word_tokenize(sent)
+    newtokens = nltk.pos_tag(tokens)
+    print(newtokens)
+    list.append(newtokens)
+#NER
+def NameErrorRec(sent):
+    words= nltk.word_tokenize(sent)
+    pos_tags= nltk.pos_tag(words)
+    chunks= nltk.ne_chunk(pos_tags, binary=True)
+    for i in chunks:
+        #print(i)
+        if hasattr(i,'label'):
+            print(i,i.label())
+        else:
+            print("No named recognition")
+            #entities.append(' '.join(c[0] for c in i))
+            #labels.append(i.label())
+
+#for i in range(len(i)):
+   #data=[entities[i],labels[i]]
+   #head=["Entities","Labels"]
+#print(tabulate(data,headers=head, tablefmt="grid"))
+
+    #words= nltk.pos_tag(sent)
+
+#Sentiment Analysis
+def Sentiment(sent):
+ blob= TextBlob(sent)
+ sentiment= blob.sentiment.polarity
+ return sentiment
+#Synonym Recognition
+def Synonym(sent):
+    syn = list()
 
 
 # this allows the bot to learn responses
+
 list_trainer = ListTrainer(sports_bot)
-for item in (intial_talk, basketball_talk, hockey_talk, leaving_talk):
+for item in (intial_talk, basketball_talk, hockey_talk,football_talk,extra_talk):
     list_trainer.train(item)
 
 print("Hi, how can I help?\n")
 
-
 while True:
     # testing certain responses
-    print("Bot: ", sports_bot.get_response(input()))
+    question= input()
+    response = sports_bot.get_response(question)
+    print("Bot: ", response)
+    PosTag(question)
+    print("User sentiment:",Sentiment(question))
+    NameErrorRec(question)
+    #Synonym(question)
+
