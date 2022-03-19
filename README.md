@@ -28,13 +28,13 @@ This is a conversational agent that assists with sports questions. The agent tak
 
 ## Features
 
-1. POS Tagging
+1. POS Tagging: 
 The chatbot uses parts of speech feature by breaking up conversation into sentences. The sentence is then broken into individual words of the original sentence. 
 
-2. Name Entity Recognition
-The chatbot breaks apart a sentence like POS tagging and recognize which are actually named entity that people recognize such as the name of a football player
+2. Name Entity Recognition: 
+The chatbot breaks apart a sentence like POS tagging and recognize which are actually named entity that people recognize such as the name of a football player.
 
-3. Sentiment Analysis
+3. Sentiment Analysis:
 The sentiment analysis identifies the words of the user inputting and recognize if it is positive or not depending on the number it is outputting. 
 ## Navigation
 
@@ -43,4 +43,13 @@ The sentiment analysis identifies the words of the user inputting and recognize 
 * [Gantt Chart](https://github.com/310-Group2/convo_agent/blob/main/Documentation/Gantt%20Chart.pdf)
 * [DFD Level 0](https://github.com/310-Group2/convo_agent/blob/main/Documentation/DFD-Level0.png)
 * [DFD Level 1](https://github.com/310-Group2/convo_agent/blob/main/Documentation/DFD-Level1.png)
+
+## List of 5 Extractable Features:
+
+* Our pre-defined responses to general sports questions can be used by others as an API.
+* We can extract POS tagging from our bot for an API. Others can use this and process their text.
+* We can also extract our Sentiment Analysis feature and users can make use of this to process text and analyze user sentiment and the bot would respond appropriately.
+* Our Named Entity Recognition can be extracted too for an API. This feature would help the bot analyze which parts of a text are named entities which increases efficiency.
+* The whole SportsBot can be extracted as an API and used for sports trivia purposes.
+
 
