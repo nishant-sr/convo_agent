@@ -113,7 +113,7 @@ responses = []
 
 def func(text):
     question= text
-    response = "\n" + str(text) + " : " + str(sports_bot.get_response(question))
+    response = "\n\n" + str(text) + " : " + str(sports_bot.get_response(question))
     print(response)
     responses.append(response)
     label.config(text=responses)
@@ -140,7 +140,7 @@ entry = tk.Entry(frame, text='type in tasks seperated by a space'
                 ,bg="white",font=90,fg='black')
 entry.place(relx=0.015,rely=0.05, relheight=0.1,relwidth=0.75)
 
-label = tk.Label(root,text='Hi, how can I help?',font=100, fg='black',wraplength=300,justify='left',anchor='nw')
+label = tk.Label(root,text='Hi, how can I help?',font=100, fg='black',wraplength=500,justify='left',anchor='nw')
 label.place(relx=0.015,rely=0.2,relheight =0.725,relwidth=0.97)
 
 root.mainloop()
