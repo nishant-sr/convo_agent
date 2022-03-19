@@ -21,10 +21,10 @@ class TestBot(unittest.TestCase):
     def testNameRecFail(self):
         self.assertFalse(sportsBot.NameErrorRec("How are you?"))
 
-    def sentimentPositive(self):  # these methods test if the sentiment is positive or negative based on the number from the sentiment method (-ve is sad sentiment, +ve is happy sentiment)
+    def testSentimentPositive(self):  # these methods test if the sentiment is positive or negative based on the number from the sentiment method (-ve is sad sentiment, +ve is happy sentiment)
         self.assertTrue(sportsBot.Sentiment("I am happy") > 0)
 
-    def sentimentNegative(self):
+    def testSentimentNegative(self):
         self.assertTrue(sportsBot.Sentiment("I am sad") < 0)
 
 
