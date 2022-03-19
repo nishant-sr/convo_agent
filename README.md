@@ -26,6 +26,16 @@ After the strings were made, in order for the bot to learn, we had to add a list
 
 This is a conversational agent that assists with sports questions. The agent takes input from the user regarding any questions related to basketball, hockey,football, and basketball. The user can also engage in some small talk with the bot. In this case, the users will be taking on the role of a newcomer to sports, and will ask questions that are related to sports that they might not have known too much about previously. Answers to the questions will be provided in a concise and precise manner as possible. 
 
+## Features
+
+1. POS Tagging
+The chatbot uses parts of speech feature by breaking up conversation into sentences. The sentence is then broken into individual words of the original sentence. 
+
+2. Name Entity Recognition
+The chatbot breaks apart a sentence like POS tagging and recognize which are actually named entity that people recognize such as the name of a football player
+
+3. Sentiment Analysis
+The sentiment analysis identifies the words of the user inputting and recognize if it is positive or not depending on the number it is outputting. 
 ## Navigation
 
 * [Project Report](https://github.com/310-Group2/convo_agent/blob/main/Documentation/310%20Project%20Plan.pdf)
