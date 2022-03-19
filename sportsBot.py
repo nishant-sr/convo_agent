@@ -5,6 +5,8 @@ from chatterbot import ChatBot
 from chatterbot.trainers import ListTrainer  # importing neccasary packages
 from textblob import TextBlob
 from nltk.corpus import wordnet
+import tkinter as tk
+
 nltk.download('omw-1.4')
 nltk.download('punkt')
 nltk.download('averaged_perceptron_tagger')
@@ -107,22 +109,45 @@ def Sentiment(sent):
 def Synonym(sent):
     syn = list()
 
+responses = []
+
+def func(text):
+    question= text
+    response = "\n" + str(text) + " : " + str(sports_bot.get_response(question))
+    print(response)
+    responses.append(response)
+    label.config(text=responses)
+    PosTag(question)
+    print("User sentiment:",Sentiment(question))
+    NameErrorRec(question)
+    #Synonym(question)
+
+root = tk.Tk()
+WIDTH = 800
+HEIGHT = 600
+
+canvas = tk.Canvas(root, width = WIDTH, height = HEIGHT)
+canvas.pack()
+
+frame = tk.Label(root,bg='black')
+frame.place(relheight=1, relwidth=1)
+
+button = tk.Button(frame, text="Send",bg='#58f089',fg='white',
+                  command = lambda:func(str(entry.get())))
+button.place(relx=0.785,rely=0.05, relheight=0.100,relwidth=0.2)
+
+entry = tk.Entry(frame, text='type in tasks seperated by a space'
+                ,bg="white",font=90,fg='black')
+entry.place(relx=0.015,rely=0.05, relheight=0.1,relwidth=0.75)
+
+label = tk.Label(root,text='Hi, how can I help?',font=100, fg='black',wraplength=300,justify='left',anchor='nw')
+label.place(relx=0.015,rely=0.2,relheight =0.725,relwidth=0.97)
+
+root.mainloop()
 
 # this allows the bot to learn responses
 
 list_trainer = ListTrainer(sports_bot)
 for item in (intial_talk, basketball_talk, hockey_talk,football_talk,extra_talk):
     list_trainer.train(item)
-
-print("Hi, how can I help?\n")
-
-while True:
-    # testing certain responses
-    question= input()
-    response = sports_bot.get_response(question)
-    print("Bot: ", response)
-    PosTag(question)
-    print("User sentiment:",Sentiment(question))
-    NameErrorRec(question)
-    #Synonym(question)
 
