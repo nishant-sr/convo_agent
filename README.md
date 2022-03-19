@@ -36,6 +36,9 @@ The chatbot breaks apart a sentence like POS tagging and recognize which are act
 
 3. Sentiment Analysis:
 The sentiment analysis identifies the words of the user inputting and recognize if it is positive or not depending on the number it is outputting. 
+
+We have also added extra topics for our agent's repertoire and our agent can give at least 5 different responses when the user enters something outside of the given topics.
+
 ## Navigation
 
 * [Project Report](https://github.com/310-Group2/convo_agent/blob/main/Documentation/310%20Project%20Plan.pdf)
