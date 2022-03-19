@@ -79,6 +79,7 @@ def PosTag(sent):
     newtokens = nltk.pos_tag(tokens)
     print(newtokens)
     list.append(newtokens)
+    return list
 #NER
 def NameErrorRec(sent):
     words= nltk.word_tokenize(sent)
