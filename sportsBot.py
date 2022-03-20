@@ -119,11 +119,6 @@ def Sentiment(sent):
     return sentiment
 # Synonym Recognition
 
-
-def Synonym(sent):
-    syn = list()
-
-
 responses = []
 
 
