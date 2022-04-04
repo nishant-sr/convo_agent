@@ -23,17 +23,6 @@ api_key = u''
 api_secret = u''
 
 flickr = flickrapi.FlickrAPI(api_key, api_secret,format='parsed-json')
-# photos   = flickr.photos.search(tags = "Stephen_Curry",per_page='1',sort='relevance')
-# serverid = photos['photos']['photo'][0]['server']
-# photoid = photos['photos']['photo'][0]['id']
-# secret = photos['photos']['photo'][0]['secret']
-# size = 'w'
-# url = f'https://live.staticflickr.com/{serverid}/{photoid}_{secret}_w.jpg'
-
-# response = requests.get(url)
-# img_data = response.content
-# img = ImageTk.PhotoImage(Image.open(BytesIO(img_data)))
-# imghold.create_image(10, 10, image=photo, anchor='nw')
 
 nltk.download('omw-1.4')
 nltk.download('punkt')
