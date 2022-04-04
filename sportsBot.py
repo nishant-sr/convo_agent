@@ -1,5 +1,6 @@
 from asyncore import read
 from hashlib import new
+from http import server
 import nltk
 from tabulate import tabulate
 from chatterbot import ChatBot
@@ -7,6 +8,32 @@ from chatterbot.trainers import ListTrainer  # importing neccasary packages
 from textblob import TextBlob
 from nltk.corpus import wordnet
 import tkinter as tk
+import wikipediaapi
+import requests
+import flickrapi
+from PIL import ImageTk
+from PIL import Image
+from io import BytesIO
+
+img = None
+
+wiki_wiki = wikipediaapi.Wikipedia('en')
+
+api_key = u''
+api_secret = u''
+
+flickr = flickrapi.FlickrAPI(api_key, api_secret,format='parsed-json')
+# photos   = flickr.photos.search(tags = "Stephen_Curry",per_page='1',sort='relevance')
+# serverid = photos['photos']['photo'][0]['server']
+# photoid = photos['photos']['photo'][0]['id']
+# secret = photos['photos']['photo'][0]['secret']
+# size = 'w'
+# url = f'https://live.staticflickr.com/{serverid}/{photoid}_{secret}_w.jpg'
+
+# response = requests.get(url)
+# img_data = response.content
+# img = ImageTk.PhotoImage(Image.open(BytesIO(img_data)))
+# imghold.create_image(10, 10, image=photo, anchor='nw')
 
 nltk.download('omw-1.4')
 nltk.download('punkt')
@@ -103,15 +130,6 @@ def NameErrorRec(sent):
             # labels.append(i.label())
     return isName
 
-# for i in range(len(i)):
-   # data=[entities[i],labels[i]]
-   # head=["Entities","Labels"]
-#print(tabulate(data,headers=head, tablefmt="grid"))
-
-    #words= nltk.pos_tag(sent)
-
-# Sentiment Analysis
-
 
 def Sentiment(sent):
     blob = TextBlob(sent)
@@ -121,17 +139,41 @@ def Sentiment(sent):
 
 responses = []
 
-
 def func(text):
+    label2.image = None
+    if len(responses) > 7:
+        responses.clear()
     question = text
     response = "\n\n" + str(text) + " : " + \
         str(sports_bot.get_response(question))
     print(response)
     responses.append(response)
-    label.config(text=responses)
-    PosTag(question)
+    ques = PosTag(question)
     print("User sentiment:", Sentiment(question))
     NameErrorRec(question)
+    if(ques):
+        for i in ques:
+            if i[1] == 'NN' or i[1] == 'NNP':
+                page_py = wiki_wiki.page(i[0])
+                responses.append("\n\tMore information on " + i[0] + ": ")
+                responses.append(page_py.summary[0:200] + "...")
+
+                photos   = flickr.photos.search(tags = i[0],per_page='1')
+                serverid = photos['photos']['photo'][0]['server']
+                photoid = photos['photos']['photo'][0]['id']
+                secret = photos['photos']['photo'][0]['secret']
+                url = f'https://live.staticflickr.com/{serverid}/{photoid}_{secret}_w.jpg'
+                print(url)
+                response = requests.get(url)
+                img_data = response.content
+                img = ImageTk.PhotoImage(Image.open(BytesIO(img_data)))
+                panel = tk.Label(root, image=img)
+                panel.pack()
+                break;
+
+    label.config(text=responses)
+    label2.image = img
+    label2.pack()
     # Synonym(question)
 
 
@@ -155,7 +197,10 @@ entry.place(relx=0.015, rely=0.05, relheight=0.1, relwidth=0.75)
 
 label = tk.Label(root, text='Hi, how can I help?', font=100,
                  fg='black', wraplength=500, justify='left', anchor='nw')
-label.place(relx=0.015, rely=0.2, relheight=0.725, relwidth=0.97)
+label.place(relx=0.015, rely=0.2, relheight=0.725, relwidth=0.5)
+
+label2 = tk.Label(image=img)
+label2.place(relx=0.55, rely=0.2, relheight=0.725, relwidth=0.5,)
 
 root.mainloop()
 
