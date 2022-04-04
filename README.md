@@ -56,4 +56,8 @@ We have also added extra topics for our agent's repertoire and our agent can giv
 * Our Named Entity Recognition can be extracted too for an API. This feature would help the bot analyze which parts of a text are named entities which increases efficiency.
 * The whole SportsBot can be extracted as an API and used for sports trivia purposes.
 
+## API-Related Features:
+* Wikipedia API - extract knowledge from definitions for your own conversation use. Programmed the agent to retrieve a brief description of the team/name/person/league/sport provided by wikipedia to give the user a combination of both the agent's answer and the relevant information the internet has. Sent a request using the keywords from each question and worked with the data returned from the wikipedia API to produce a user-friendly response.
+
+* Flickr API - search on specific tags based on your conversation and display relevant results. Programmed the agent to retrieve a relevant image when needed to further enhance the answer given to users as they all vary in their level of knowledge of various sports.Sent a request using the keywords from each question and worked with the data returned from the Flickr API to modify the GUI and present a relevant image to accompany the information.
 

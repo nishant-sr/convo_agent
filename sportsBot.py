@@ -88,9 +88,8 @@ football_talk = ["Fun fact about football", "The NFL had its first event in 1920
                  "You can score a touchdown by taking the ball to the oppposite endzone for 6 points, and an addition 1 point for the field goal", "Is tackling allowed in football?",
                  "Usually yes, football is a contact sport and most leagues allow tackling as long as it's within bounds", "How do players stay protected?", "Usually players wear protective gear such as helmets and shoulder pads",
                  "What's the most successful team in the NFL?", "The Steelers and the Patriots both have 6 Super-Bowl wins, placing them at the top"]
+
 # POS tag
-
-
 def PosTag(sent):
     list = []
     # for i in sent:
@@ -99,9 +98,8 @@ def PosTag(sent):
     print(newtokens)
     list.append(newtokens)
     return newtokens
+
 # NER
-
-
 def NameErrorRec(sent):
     words = nltk.word_tokenize(sent)
     pos_tags = nltk.pos_tag(words)
@@ -124,12 +122,11 @@ def Sentiment(sent):
     blob = TextBlob(sent)
     sentiment = blob.sentiment.polarity
     return sentiment
-# Synonym Recognition
 
 responses = []
 
 def func(text):
-    label2.image = None
+    label2.image = None;
     if len(responses) > 7:
         responses.clear()
     question = text
@@ -142,12 +139,12 @@ def func(text):
     NameErrorRec(question)
     if(ques):
         for i in ques:
-            if i[1] == 'NN' or i[1] == 'NNP':
+            if i[1] == 'NNP' or i[1] == 'NNS':
                 page_py = wiki_wiki.page(i[0])
                 responses.append("\n\tMore information on " + i[0] + ": ")
                 responses.append(page_py.summary[0:200] + "...")
 
-                photos   = flickr.photos.search(tags = i[0],per_page='1')
+                photos   = flickr.photos.search(tags = i[0],per_page='1',sort='relevance')
                 serverid = photos['photos']['photo'][0]['server']
                 photoid = photos['photos']['photo'][0]['id']
                 secret = photos['photos']['photo'][0]['secret']
@@ -155,17 +152,17 @@ def func(text):
                 print(url)
                 response = requests.get(url)
                 img_data = response.content
-                img = ImageTk.PhotoImage(Image.open(BytesIO(img_data)))
+                img = ImageTk.PhotoImage(Image.open(BytesIO(img_data)).resize((100, 100)))
                 panel = tk.Label(root, image=img)
                 panel.pack()
+                label2.image = img
+                label2.pack()
                 break;
 
     label.config(text=responses)
-    label2.image = img
-    label2.pack()
-    # Synonym(question)
 
 
+# GUI
 root = tk.Tk()
 WIDTH = 800
 HEIGHT = 600
@@ -189,7 +186,6 @@ label = tk.Label(root, text='Hi, how can I help?', font=100,
 label.place(relx=0.015, rely=0.2, relheight=0.725, relwidth=0.5)
 
 label2 = tk.Label(image=img)
-label2.place(relx=0.55, rely=0.2, relheight=0.725, relwidth=0.5,)
 
 root.mainloop()
 
